@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#1a0b2e">
     <title>Useful Tips – Windows Tools</title>
     <style>
         /* Basic reset */
@@ -10,6 +12,49 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        /* Bypass Dark Reader and other dark mode extensions */
+        html {
+            color-scheme: dark;
+            background-color: #1a0b2e;
+        }
+        
+        html[data-darkreader-mode],
+        html[data-darkreader-scheme] {
+            filter: none !important;
+        }
+        
+        body[data-darkreader-mode],
+        body[data-darkreader-scheme] {
+            filter: none !important;
+        }
+        
+        /* Prevent Dark Reader from modifying our custom styles */
+        :root {
+            --darkreader-bg--body: #1a0b2e !important;
+            --darkreader-text--body: #ffffff !important;
+        }
+        
+        /* Force our colors to override Dark Reader */
+        html[data-darkreader-mode],
+        html[data-darkreader-scheme],
+        body[data-darkreader-mode],
+        body[data-darkreader-scheme],
+        *[data-darkreader-mode],
+        *[data-darkreader-scheme] {
+            background-color: inherit !important;
+            color: inherit !important;
+            border-color: inherit !important;
+            filter: none !important;
+        }
+        
+        /* Ensure body and html maintain our dark theme */
+        html,
+        body {
+            background: linear-gradient(135deg, #1a0b2e, #2d1b4e, #1a0b2e) !important;
+            background-size: 200% 200% !important;
+            color: #ffffff !important;
         }
 
         /* Disable text selection globally */
@@ -355,6 +400,43 @@
     </div>
 
     <script>
+        // Disable Dark Reader and other dark mode extensions
+        (function() {
+            // Remove Dark Reader's injected styles
+            const removeDarkReaderStyles = () => {
+                // Remove Dark Reader style elements
+                document.querySelectorAll('style[data-darkreader], link[data-darkreader]').forEach(el => el.remove());
+                
+                // Remove Dark Reader attributes
+                document.documentElement.removeAttribute('data-darkreader-mode');
+                document.documentElement.removeAttribute('data-darkreader-scheme');
+                document.body.removeAttribute('data-darkreader-mode');
+                document.body.removeAttribute('data-darkreader-scheme');
+                
+                // Force our background colors
+                document.documentElement.style.backgroundColor = '#1a0b2e';
+                document.body.style.backgroundColor = '#1a0b2e';
+            };
+            
+            // Run immediately
+            removeDarkReaderStyles();
+            
+            // Watch for Dark Reader injection and remove it
+            const observer = new MutationObserver(() => {
+                removeDarkReaderStyles();
+            });
+            
+            observer.observe(document.documentElement, {
+                attributes: true,
+                attributeFilter: ['data-darkreader-mode', 'data-darkreader-scheme'],
+                childList: true,
+                subtree: true
+            });
+            
+            // Also check periodically
+            setInterval(removeDarkReaderStyles, 100);
+        })();
+
         // Enhanced particle system
         const particlesContainer = document.getElementById('particles');
         const symbols = ['✦', '✨', '❄', '★', '❅', '✴', '❆', '💫', '⭐', '🌟'];

@@ -12,8 +12,8 @@
             box-sizing: border-box;
         }
 
-        /* Only disable text selection on specific elements if needed */
-        .tool-name {
+        /* Disable text selection globally (no text selection cursor) */
+        body {
             user-select: none;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -29,7 +29,7 @@
             padding: 40px 20px;
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="%23000000"/></svg>') 6 6, auto;
             position: relative;
-            overflow-y: auto; /* Enable scrolling */
+            overflow-y: auto;
         }
 
         /* Particles Container */
@@ -69,7 +69,7 @@
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
             text-align: center;
             position: relative;
@@ -77,85 +77,86 @@
         }
 
         .logo {
-            font-size: 3.5rem;
+            font-size: 4rem;
             font-weight: 800;
             background: linear-gradient(45deg, #a855f7, #e879f9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 20px rgba(168, 85, 247, 0.5);
+            text-shadow: 0 0 30px rgba(168, 85, 247, 0.6);
         }
 
         .subtitle {
-            margin-top: 10px;
-            color: #b0b0b0;
-            font-size: 1.3rem;
+            margin-top: 15px;
+            color: #c0c0c0;
+            font-size: 1.5rem;
         }
 
         .card {
-            margin: 60px 0;
-            padding: 40px;
-            background: rgba(139,92,246,0.1);
-            backdrop-filter: blur(15px);
-            border-radius: 25px;
-            border: 2px solid rgba(168,85,247,0.4);
+            margin: 70px 0;
+            padding: 50px;
+            background: rgba(139,92,246,0.12);
+            backdrop-filter: blur(18px);
+            border-radius: 30px;
+            border: 2px solid rgba(168,85,247,0.5);
             box-shadow: 
-                0 15px 50px rgba(139,92,246,0.4),
-                0 0 60px rgba(168,85,247,0.3),
-                inset 0 0 30px rgba(168,85,247,0.1);
-            transition: all 0.4s ease;
+                0 20px 60px rgba(139,92,246,0.5),
+                0 0 80px rgba(168,85,247,0.4),
+                inset 0 0 40px rgba(168,85,247,0.15);
+            transition: all 0.5s ease;
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(168,85,247,0.7);
+            transform: translateY(-15px);
+            border-color: rgba(168,85,247,0.8);
             box-shadow: 
-                0 25px 70px rgba(139,92,246,0.6),
-                0 0 80px rgba(168,85,247,0.5),
-                inset 0 0 40px rgba(168,85,247,0.2);
+                0 30px 80px rgba(139,92,246,0.7),
+                0 0 100px rgba(168,85,247,0.6),
+                inset 0 0 50px rgba(168,85,247,0.25);
         }
 
         .card-title {
-            font-size: 2.2rem;
-            margin-bottom: 30px;
-            text-shadow: 0 0 15px rgba(168,85,247,0.4);
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-shadow: 0 0 20px rgba(168,85,247,0.5);
         }
 
         .tools-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
         }
 
         .tool-item {
-            background: rgba(139,92,246,0.15);
-            padding: 30px;
-            border-radius: 18px;
-            border: 1px solid rgba(168,85,247,0.3);
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+            background: rgba(139,92,246,0.2);
+            padding: 35px;
+            border-radius: 22px;
+            border: 1px solid rgba(168,85,247,0.4);
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
             text-decoration: none;
             color: inherit;
             display: block;
         }
 
         .tool-item:hover {
-            transform: translateY(-8px);
-            border-color: rgba(168,85,247,0.6);
-            box-shadow: 0 15px 40px rgba(139,92,246,0.4);
+            transform: translateY(-12px) scale(1.05);
+            border-color: rgba(168,85,247,0.8);
+            box-shadow: 0 20px 50px rgba(139,92,246,0.6);
         }
 
         .tool-name {
-            font-size: 1.6rem;
-            font-weight: 600;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: #ffffff;
-            text-shadow: 0 0 10px rgba(232,121,249,0.4);
+            text-shadow: 0 0 15px rgba(232,121,249,0.6);
         }
 
         .footer {
-            margin-top: 80px;
-            color: #888;
-            font-size: 0.9rem;
-            text-shadow: 0 0 10px rgba(168,85,247,0.2);
+            margin-top: 100px;
+            margin-bottom: 40px;
+            color: #aaa;
+            font-size: 1.1rem;
+            text-shadow: 0 0 15px rgba(168,85,247,0.3);
         }
 
         @keyframes fadeIn {
@@ -169,24 +170,24 @@
 
     <div class="container">
         <h1 class="logo">Useful Tips</h1>
-        <p class="subtitle">Recommended Windows Tools & Apps</p>
+        <p class="subtitle">My Favorite Windows Tools & Apps</p>
 
         <div class="card">
-            <h2 class="card-title">My Favorite Windows Tools</h2>
+            <h2 class="card-title">Recommended Open-Source Tools</h2>
 
             <div class="tools-list">
                 <a href="https://github.com/marticliment/UniGetUI" target="_blank" class="tool-item"><div class="tool-name">WingetUI (UniGetUI)</div></a>
                 <a href="https://github.com/File-New-Project/EarTrumpet" target="_blank" class="tool-item"><div class="tool-name">EarTrumpet</div></a>
                 <a href="https://github.com/amir1376/ab-download-manager" target="_blank" class="tool-item"><div class="tool-name">AB Download Manager</div></a>
                 <a href="https://sourceforge.net/projects/equalizerapo/" target="_blank" class="tool-item"><div class="tool-name">Equalizer APO</div></a>
-                <a href="https://github.com/TheJoeFin/Text-Grab" target="_blank" class="tool-item"><div class="tool-name">PasteBar</div></a>
+                <a href="https://github.com/PasteBar/PasteBarApp" target="_blank" class="tool-item"><div class="tool-name">PasteBar</div></a>
                 <a href="https://github.com/ShareX/ShareX" target="_blank" class="tool-item"><div class="tool-name">ShareX</div></a>
                 <a href="https://github.com/tillywork/tillywork" target="_blank" class="tool-item"><div class="tool-name">tillywork</div></a>
                 <a href="https://github.com/Abdelrhman-AK/WinPaletter" target="_blank" class="tool-item"><div class="tool-name">WinPaletter</div></a>
                 <a href="https://diskanalyzer.com/" target="_blank" class="tool-item"><div class="tool-name">WizTree</div></a>
                 <a href="https://www.thunderbird.net/" target="_blank" class="tool-item"><div class="tool-name">Thunderbird</div></a>
                 <a href="https://github.com/sumatrapdfreader/sumatrapdf" target="_blank" class="tool-item"><div class="tool-name">Sumatra PDF</div></a>
-                <a href="https://bitwarden.com/" target="_blank" class="tool-item"><div class="tool-name">Bitwarden</div></a>
+                <a href="https://github.com/bitwarden/clients" target="_blank" class="tool-item"><div class="tool-name">Bitwarden</div></a>
                 <a href="https://github.com/upscayl/upscayl" target="_blank" class="tool-item"><div class="tool-name">Upscayl</div></a>
                 <a href="https://github.com/rocksdanister/lively" target="_blank" class="tool-item"><div class="tool-name">Lively Wallpaper</div></a>
                 <a href="https://github.com/TheJoeFin/Text-Grab" target="_blank" class="tool-item"><div class="tool-name">Text Grab</div></a>
@@ -194,12 +195,12 @@
                 <a href="https://github.com/HandBrake/HandBrake" target="_blank" class="tool-item"><div class="tool-name">HandBrake</div></a>
                 <a href="https://justgetflux.com/" target="_blank" class="tool-item"><div class="tool-name">f.lux</div></a>
                 <a href="https://github.com/rustdesk/rustdesk" target="_blank" class="tool-item"><div class="tool-name">RustDesk</div></a>
-                <a href="https://fluentsearch.net/" target="_blank" class="tool-item"><div class="tool-name">Fluent Search</div></a>
+                <a href="https://github.com/adirh3/Fluent-Search" target="_blank" class="tool-item"><div class="tool-name">Fluent Search</div></a>
             </div>
         </div>
 
         <div class="footer">
-            Created for GitHub Pages • 2026
+            Maintained by vxnity
         </div>
     </div>
 
@@ -207,21 +208,21 @@
         const particlesContainer = document.getElementById('particles');
         const symbols = ['✦', '✨', '❄', '★', '❅', '✴', '❆'];
         const colors = ['#ffd700', '#ffffff', '#c0c0c0', '#e879f9', '#a855f7', '#ff69b4'];
-        const count = 60;
+        const count = 80;
 
         for (let i = 0; i < count; i++) {
             const particle = document.createElement('div');
             particle.classList.add('particle');
             particle.textContent = symbols[Math.floor(Math.random() * symbols.length)];
             particle.style.color = colors[Math.floor(Math.random() * colors.length)];
-            particle.style.fontSize = (Math.random() * 12 + 10) + 'px';
+            particle.style.fontSize = (Math.random() * 14 + 12) + 'px';
 
             const left = Math.random() * 100 + 'vw';
-            const drift = (Math.random() - 0.5) * 200 + 'px';
+            const drift = (Math.random() - 0.5) * 300 + 'px';
             particle.style.setProperty('--drift', drift);
 
-            const duration = Math.random() * 10 + 15 + 's';
-            const delay = Math.random() * 15 + 's';
+            const duration = Math.random() * 12 + 18 + 's';
+            const delay = Math.random() * 20 + 's';
 
             particle.style.left = left;
             particle.style.animationDuration = duration;
